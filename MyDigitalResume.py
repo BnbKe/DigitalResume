@@ -41,7 +41,6 @@ if user_query:
     st.write("Chatbot Response:")
     st.write(response)
 
-
 #--general settings
 Page_title = "Digital CV | Banabas Kariuki"
 Page_Icon = "random"
