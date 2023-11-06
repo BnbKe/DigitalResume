@@ -1,18 +1,44 @@
-import os
 import streamlit as st
 import openai
-import requests
-from bs4 import BeautifulSoup
-import toml
 from pathlib import Path
-import streamlit as st
 from PIL import Image
 
-#path settings
-current_dir = Path(__path__).parent if "_file_" in locals() else Path.cwd()
-css_file = current_dir/"styles"/"main.css"
-resume_file = current_dir/"assets"/"cv.pdf"
-profile_pic = current_dir/"assets"/"bnb.png"
+# Set OpenAI API key using the SDK's dedicated method
+api_key = st.secrets["OPENAI_API_KEY"]
+openai.api_key = api_key
+
+# Path settings
+current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+css_file = current_dir / "styles" / "main.css"
+resume_file = current_dir / "assets" / "cv.pdf"
+profile_pic = current_dir / "assets" / "bnb.png"
+
+# General settings
+Page_title = "Digital CV | Banabas Kariuki"
+Page_Icon = "random"
+Name = "Banabas Kariuki"
+# ... (other settings as in your original script)
+
+# Load CSS, PDF, and Prof_pic
+with open(css_file) as f:
+    st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
+    with open(resume_file, "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+    profile_pic = Image.open(profile_pic)
+
+# Chatbot interface for user queries
+st.title("Chat with the AI")
+user_query = st.text_input("Ask a question or enter a search query:")
+
+if user_query:
+    response_obj = openai.Completion.create(
+        engine="text-davinci-002",  # Choose an appropriate engine
+        prompt=user_query,
+        max_tokens=50,  # Adjust the response length as needed
+    )
+    response = response_obj.choices[0].text
+    st.write("Chatbot Response:")
+    st.write(response)
 
 
 #--general settings
