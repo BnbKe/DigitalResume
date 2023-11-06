@@ -23,7 +23,6 @@ profile_pic = current_dir / "assets" / "bnb.png"
 # Load CSS, PDF, and Prof_pic
 with open(css_file) as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
-    profile_pic = Image.open(str(profile_pic))  # Use str(profile_pic) to get the file path as a string
 
 # Display the PDF file
 with open(resume_file, "rb") as pdf_file:
@@ -33,8 +32,9 @@ st.write("📄 Download Resume")
 st.write(PDFbyte)
 
 # Display the profile picture
-st.image(profile_pic, width=230)
+profile_pic = Image.open(profile_pic)  # Open the image correctly
 
+st.image(profile_pic, width=230)
 
 # Chatbot interface for user queries
 st.title("Chat with the AI")
@@ -49,7 +49,6 @@ if user_query:
     response = response_obj.choices[0].text
     st.write("Chatbot Response:")
     st.write(response)
-
 #--general settings
 Page_title = "Digital CV | Banabas Kariuki"
 Page_Icon = "random"
