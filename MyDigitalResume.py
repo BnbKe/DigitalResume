@@ -25,7 +25,8 @@ with open(css_file) as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
     with open(resume_file, "rb") as pdf_file:
         PDFbyte = pdf_file.read()
-    profile_pic = Image.open(profile_pic)
+    profile_pic = Image.open(str(profile_pic))  # Use str(profile_pic) to get the file path as a string
+
 
 # Chatbot interface for user queries
 st.title("Chat with the AI")
