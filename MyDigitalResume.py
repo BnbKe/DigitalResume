@@ -8,69 +8,6 @@ from pathlib import Path
 import streamlit as st
 from PIL import Image
 
-# Set OpenAI API key using the SDK's dedicated method
-api_key = st.secrets["OPENAI_API_KEY"]
-openai.api_key=api_key
-
-
-# Set OpenAI API key using the SDK's dedicated method
-api_key = st.secrets["OPENAI_API_KEY"]
-openai.api_key=api_key
-
-
-# Set up the Streamlit app
-def main():
-    st.title('Banabas Kariuki: Ask Anything')
-    st.sidebar.image("bnb", caption='Banabas', use_column_width=True)
-    st.sidebar.title('Aspiring Data Scientist and Machine Learning Engineer')
-
-    # Initialize 'typed_query_history' session state if not present
-    if 'typed_query_history' not in st.session_state:
-        st.session_state.typed_query_history = []
-
-    # Handle user queries
-    user_query = st.text_input("Let's find a job:', ' '")
-
-    if user_query:
-        # Initialize a dictionary to store responses
-        response_data = {"user_query": user_query, "responses": []}
-
-        # Use OpenAI for generating responses
-        response_obj = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "user", "content": user_query}
-            ]
-        )
-        response = response_obj['choices'][0]['message']['content']
-        response_data["responses"].append({"name": "OpenAI", "response": response})
-
-        # Display responses
-        for source_data in response_data["responses"]:
-            st.write(source_data['response'])
-
-        # Store user query and response data in session state
-        st.session_state.typed_query_history.append(response_data)
-
-    # Display chat history with clickable buttons for typed queries
-    st.sidebar.title('Typed Query History')
-    clear_typed_query_history = st.sidebar.button("Clear Typed Query History")
-
-    if clear_typed_query_history:
-        st.session_state.typed_query_history = []
-
-    for i, entry in enumerate(st.session_state.typed_query_history):
-        query = entry["user_query"]
-        for source_data in entry["responses"]:
-            source_name = source_data["name"]
-            source_response = source_data["response"]
-            if st.sidebar.button(f"{i + 1}. {source_name}: {query}", key=f"typed_query_history_button_{i}_{source_name}"):
-                st.write(f"Response for '{query}' from {source_name}:")
-                st.write(source_response)
-
-if __name__ == "__main__":
-    main()
-
 #path settings
 current_dir = Path(__path__).parent if "_file_" in locals() else Path.cwd()
 css_file = current_dir/"styles"/"main.css"
