@@ -32,6 +32,9 @@ with open(resume_file, "rb") as pdf_file:
 st.write("📄 Download Resume")
 st.write(PDFbyte)
 
+# Display the profile picture
+st.image(profile_pic, width=230)
+
 
 # Chatbot interface for user queries
 st.title("Chat with the AI")
