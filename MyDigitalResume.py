@@ -7,17 +7,18 @@ from PIL import Image
 api_key = st.secrets["OPENAI_API_KEY"]
 openai.api_key = api_key
 
+# Page configuration
+Page_title = "Digital CV | Banabas Kariuki"
+Page_Icon = "random"
+
+# Set page configuration as the first Streamlit command
+st.set_page_config(page_title=Page_title, page_icon=Page_Icon)
+
 # Path settings
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 css_file = current_dir / "styles" / "main.css"
 resume_file = current_dir / "assets" / "cv.pdf"
 profile_pic = current_dir / "assets" / "bnb.png"
-
-# General settings
-Page_title = "Digital CV | Banabas Kariuki"
-Page_Icon = "random"
-Name = "Banabas Kariuki"
-# ... (other settings as in your original script)
 
 # Load CSS, PDF, and Prof_pic
 with open(css_file) as f:
