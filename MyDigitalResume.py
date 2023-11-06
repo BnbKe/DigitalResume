@@ -56,8 +56,6 @@ Social_media = {
 }
 projects = {"OpenAI-Powered ChatBot" : "https://github.com/BnbKe/Publish-ACN"}
 
-st.set_page_config(page_title=Page_title, page_icon=Page_Icon)
-
 #--load CSS, PDF, and Prof_pic
 
 with open(css_file) as f:
