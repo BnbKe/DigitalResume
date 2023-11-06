@@ -1,54 +1,21 @@
-import streamlit as st
-import openai
 from pathlib import Path
+import streamlit as st
 from PIL import Image
 
-# Set OpenAI API key using the SDK's dedicated method
-api_key = st.secrets["OPENAI_API_KEY"]
-openai.api_key = api_key
 
-# Page configuration
-Page_title = "Digital CV | Banabas Kariuki"
-Page_Icon = "random"
+#path settings
+current_dir = Path(__path__).parent if "_file_" in locals() else Path.cwd()
+css_file = current_dir/"styles"/"main.css"
+resume_file = current_dir/"assets"/"cv.pdf"
+profile_pic = current_dir/"assets"/"bnb.png"
 
-# Set page configuration as the first Streamlit command
-st.set_page_config(page_title=Page_title, page_icon=Page_Icon)
 
-# Path settings
-current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
-css_file = current_dir / "styles" / "main.css"
-resume_file = current_dir / "assets" / "cv.pdf"
-profile_pic = current_dir / "assets" / "bnb.png"
 
-# Load CSS, PDF, and Prof_pic
-with open(css_file) as f:
-    st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 
-# Display the PDF file
-with open(resume_file, "rb") as pdf_file:
-    PDFbyte = pdf_file.read()
 
-st.write("📄 Download Resume")
-st.write(PDFbyte)
 
-# Display the profile picture
-profile_pic = Image.open(profile_pic)  # Open the image correctly
 
-st.image(profile_pic, width=230)
 
-# Chatbot interface for user queries
-st.title("Chat with the AI")
-user_query = st.text_input("Ask a question or enter a search query:")
-
-if user_query:
-    response_obj = openai.Completion.create(
-        engine="text-davinci-002",  # Choose an appropriate engine
-        prompt=user_query,
-        max_tokens=50,  # Adjust the response length as needed
-    )
-    response = response_obj.choices[0].text
-    st.write("Chatbot Response:")
-    st.write(response)
 #--general settings
 Page_title = "Digital CV | Banabas Kariuki"
 Page_Icon = "random"
@@ -63,6 +30,8 @@ Social_media = {
     "Twitter" : "https://twitter.com/Banabas_Kariuki"
 }
 projects = {"OpenAI-Powered ChatBot" : "https://github.com/BnbKe/Publish-ACN"}
+
+st.set_page_config(page_title=Page_title, page_icon=Page_Icon)
 
 #--load CSS, PDF, and Prof_pic
 
@@ -106,10 +75,10 @@ st.write(
         extract insights from textual data.
  - ⦿ Strong hand on experience with Python, R programming, Tableau, and SAS
  - ⦿ Excellent knowledge of Machine Learning algorithms and their implementation using 
-        Scikit learn, TensorFlow, Keras etc.
+    Scikit learn, TensorFlow, Keras etc.
  - ⦿ Good understanding of statistical principles and their respective applications
  - ⦿ Experience in building OpenAI-powered ChatBot that uses advanced Natural 
-        Language Processing (NLP) techniques to generate and analyze data
+    Language Processing (NLP) techniques to generate and analyze data
 """
 )
 
