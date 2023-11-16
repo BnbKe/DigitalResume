@@ -18,7 +18,7 @@ profile_pic = current_dir/"assets"/"bnb.png"
 
 #--general settings
 Page_title = "Digital CV | Banabas Kariuki"
-Page_Icon = "random"
+Page_Icon = "👨🏾‍💻"
 Name = "Banabas Kariuki"
 Description = """
 Aspiring Data Scientist, Data driven professional with background in data analytics, risk management, IT services, and banking.
