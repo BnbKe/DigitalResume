@@ -195,4 +195,5 @@ st.write(
 st.write("Projects")
 st.subheader("Projects")
 for project, link in projects.items():
-    st.write(f"[{projects}]({link})")
+    st.write(f"[{projects}]({link})",
+            [{projects}]({link})")
