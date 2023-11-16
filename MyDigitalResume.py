@@ -29,7 +29,7 @@ Social_media = {
     "linkedIn": "https://www.linkedin.com/in/banabas-kariuki-30b30324b/",
     "Twitter" : "https://twitter.com/Banabas_Kariuki"
 }
-projects = "OpenAI-Powered ChatBot" : "https://github.com/BnbKe/Publish-ACN"
+projects = ("OpenAI-Powered ChatBot" : "https://github.com/BnbKe/Publish-ACN")
 
 st.set_page_config(page_title=Page_title, page_icon=Page_Icon)
 
