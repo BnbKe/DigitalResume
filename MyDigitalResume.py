@@ -191,7 +191,7 @@ st.write(
 )
 
 #---Projects
-st.write("Projects")
+#st.write("Projects")
 st.subheader("Projects")
 st.write(f"[OpenAI-Powered ChatBot](https://github.com/BnbKe/Publish-ACN)")
 st.write(f"[Customized OpenAI-Powered Data Analyst GPT](https://onlygpt.streamlit.app/)")
