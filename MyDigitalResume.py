@@ -29,9 +29,8 @@ Social_media = {
     "linkedIn": "https://www.linkedin.com/in/banabas-kariuki-30b30324b/",
     "Twitter" : "https://twitter.com/Banabas_Kariuki"
 }
-projects = {"OpenAI-Powered ChatBot" : "https://github.com/BnbKe/Publish-ACN",
-            "Mini - ChatGPT - Customized" : "https://github.com/BnbKe/MyChatGPT"
-           }
+Project_1 = {"OpenAI-Powered ChatBot" : "https://github.com/BnbKe/Publish-ACN"}
+Project_2 = {"Customized OpenAI-Powered Data Analyst GPT" : "https://onlygpt.streamlit.app/"}
 
 st.set_page_config(page_title=Page_title, page_icon=Page_Icon)
 
@@ -194,6 +193,5 @@ st.write(
 #---Projects
 st.write("Projects")
 st.subheader("Projects")
-for project, link in projects.items():
-    st.write(f"[{projects}]({link})",
-            [{projects}]({link})")
+st.write(f"[OpenAI-Powered ChatBot](https://github.com/BnbKe/Publish-ACN)")
+st.write(f"[Customized OpenAI-Powered Data Analyst GPT](https://onlygpt.streamlit.app/)")
